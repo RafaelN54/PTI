@@ -88,7 +88,7 @@ function Home() {
       </div>
       <button
         className="play-button bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-10 rounded absolute bottom-4 right-4 md:bottom-8 md:right-8"
-        onClick={() => navigate('/visual-novel')}
+        onClick={() => navigate('/components/VisualNovel.jsx')}
       >
         Play
       </button>
