@@ -20,6 +20,7 @@
   
 .custom-button:hover {
   background-color: #3e5ed4;
+  scale: 102%;
 }
 
 .custom-button:disabled, .cutom-button[disabled]{

@@ -8,6 +8,7 @@ import newsImage from './assets/news.png';
 import movieImage from './assets/movie.png';
 import DisplayNews from './displayNews.jsx';
 import MovieContainer from './movie.jsx';
+import CurrencyConverter from './currencyConverter.jsx';
 import './home.css';
 
 const api = {
@@ -23,7 +24,8 @@ function Home() {
   const [userImage, setUserImage] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
   const [showNews, setShowNews] = useState(false);
-  const [showMovie, setShowMovie] = useState(false); 
+  const [showMovie, setShowMovie] = useState(false);
+  const [showCurrencyConverter, setShowCurrencyConverter] = useState(false); // State variable for currency converter visibility
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -93,7 +95,7 @@ function Home() {
       <div className="flex items-center justify-center flex-1">
         <img src={userImage} alt="My Image" style={{ width: '400px', height: 'auto', marginBottom:'80px'}} />
       </div>
-      <button className="phone-button absolute bottom-4 left-4" onClick={() => setShowOptions(!showOptions)}>
+      <button className="phone-button absolute bottom-4 left-4 transition duration-300 hover:scale-105" onClick={() => setShowOptions(!showOptions)}>
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
       </button>
       {showOptions && (
@@ -101,16 +103,20 @@ function Home() {
           <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>Close</button>
           <ul>
             <li>
-              <button onClick={() => { setShowNews(true); setShowMovie(false); }} className="news-button">
+              <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
                 <img src={newsImage} alt="News" style={{ width: '50px', height: '50px' }} />
               </button>
             </li>
             <li>
-              <button onClick={() => { setShowMovie(true); setShowNews(false); }} className="movie-button">
-              <img src={movieImage} alt="Movie" style={{ width: '50px', height: '50px' }} />
+              <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
+                <img src={movieImage} alt="Movie" style={{ width: '50px', height: '50px' }} />
               </button>
             </li>
-            <li onClick={() => console.log('Currency Calculator')}>Currency Calculator</li>
+            <li>
+              <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
+                Currency Converter
+              </button>
+            </li>
             <li onClick={() => console.log('About Us')}>About Us</li>
           </ul>
         </div>
@@ -127,7 +133,13 @@ function Home() {
           <MovieContainer />
         </div>
       )}
-      <button className="play-button bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-10 rounded absolute bottom-4 right-4 md:bottom-8 md:right-8"
+      {showCurrencyConverter && ( // Render currency converter component if showCurrencyConverter is true
+        <div className="show-box">
+          <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>Close</button>
+          <CurrencyConverter />
+        </div>
+      )}
+      <button className="play-button transition duration-300 hover:scale-105 bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-10 rounded absolute bottom-4 right-4 md:bottom-8 md:right-8"
         onClick={() => navigate('/components/VisualNovel.jsx')}>Play</button>
     </div>
   );

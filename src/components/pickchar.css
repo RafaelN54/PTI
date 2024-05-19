@@ -37,6 +37,8 @@
     }
 
     .character:hover {
+      scale: 102%;
+      transition: 400ms;
       filter: brightness(80%);
     }
 
