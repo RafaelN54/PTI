@@ -6,6 +6,9 @@ import girlImage from './assets/girl.png';
 import phoneImage from './assets/phone.png';
 import newsImage from './assets/news.png';
 import movieImage from './assets/movie.png';
+import playButton from './assets/play.png';
+import calculatorImage from './assets/calculator.png';
+import aboutusImage from './assets/aboutus.png';
 import DisplayNews from './displayNews.jsx';
 import MovieContainer from './movie.jsx';
 import CurrencyConverter from './currencyConverter.jsx';
@@ -16,6 +19,14 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
+function BubbleChat({ message, position }) {
+  return (
+    <div className={`bubble-chat ${position}`}>
+      {message}
+    </div>
+  );
+}
+
 function Home() {
   const [weather, setWeather] = useState({});
   const [energy, setEnergy] = useState(() => getLocalStorageValue("energy", 50));
@@ -25,7 +36,11 @@ function Home() {
   const [showOptions, setShowOptions] = useState(false);
   const [showNews, setShowNews] = useState(false);
   const [showMovie, setShowMovie] = useState(false);
-  const [showCurrencyConverter, setShowCurrencyConverter] = useState(false); // State variable for currency converter visibility
+  const [showCurrencyConverter, setShowCurrencyConverter] = useState(false);
+  const [showBubbleChat, setShowBubbleChat] = useState(false);
+  const [showAboutUs, setShowAboutUs] = useState(false);
+  const [bubbleChatMessage, setBubbleChatMessage] = useState("");
+  const [bubbleChatPosition, setBubbleChatPosition] = useState({ top: 0, left: 0 });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,6 +79,17 @@ function Home() {
     setLocalStorageValue("affinity", affinity);
   }, [affinity]);
 
+  const handleCharacterClick = (event) => {
+    const rect = event.target.getBoundingClientRect();
+    const position = {
+      top: rect.top + window.pageYOffset,
+      left: rect.left + window.pageXOffset + rect.width,
+    };
+    setBubbleChatPosition(position);
+    setBubbleChatMessage("Hello! How can I help you?");
+    setShowBubbleChat(!showBubbleChat);
+  };
+
   return (
     <div className="kamar bg-cover bg-center h-screen w-screen relative flex flex-col justify-center">
       <StatusBarComponent name="statusBar" energy={energy} money={money} affinity={affinity} />
@@ -93,7 +119,10 @@ function Home() {
         </div>
       </div>
       <div className="flex items-center justify-center flex-1">
-        <img src={userImage} alt="My Image" style={{ width: '400px', height: 'auto', marginBottom:'80px'}} />
+        <img src={userImage} alt="My Image" style={{ width: '400px', height: 'auto', marginBottom:'-10px'}} onClick={handleCharacterClick} />
+      </div>
+      <div className="flex items-center justify-center">
+      {showBubbleChat && (<BubbleChat message={bubbleChatMessage} position="" style={bubbleChatPosition} />)}
       </div>
       <button className="phone-button absolute bottom-4 left-4 transition duration-300 hover:scale-105" onClick={() => setShowOptions(!showOptions)}>
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
@@ -104,20 +133,24 @@ function Home() {
           <ul>
             <li>
               <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
-                <img src={newsImage} alt="News" style={{ width: '50px', height: '50px' }} />
+                <img src={newsImage} alt="News" style={{ width: '100px', height: 'auto' }} />
               </button>
             </li>
             <li>
               <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
-                <img src={movieImage} alt="Movie" style={{ width: '50px', height: '50px' }} />
+                <img src={movieImage} alt="Movie" style={{ width: '100px', height: 'auto' }} />
               </button>
             </li>
             <li>
               <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
-                Currency Converter
+              <img src={calculatorImage} alt="Calculator" style={{ width: '100px', height: 'auto' }} />
               </button>
             </li>
-            <li onClick={() => console.log('About Us')}>About Us</li>
+            <li> 
+            <button onClick={() => { setShowAboutUs(true); setShowNews(false); setShowMovie(false); setShowCurrencyConverter(false); }} className="aboutus-button transition duration-300 hover:scale-105">
+             < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
+            </button>    
+            </li>
           </ul>
         </div>
       )}
@@ -127,20 +160,22 @@ function Home() {
           <DisplayNews />
         </div>
       )}
-      {showMovie && (
+      {showMovie&& (
         <div className="show-box">
           <button className="close-button" onClick={() => setShowMovie(false)}>Close</button>
           <MovieContainer />
         </div>
       )}
-      {showCurrencyConverter && ( // Render currency converter component if showCurrencyConverter is true
+      {showCurrencyConverter && (
         <div className="show-box">
           <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>Close</button>
           <CurrencyConverter />
         </div>
       )}
-      <button className="play-button transition duration-300 hover:scale-105 bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-10 rounded absolute bottom-4 right-4 md:bottom-8 md:right-8"
-        onClick={() => navigate('/components/VisualNovel.jsx')}>Play</button>
+      <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
+        onClick={() => navigate('/components/VisualNovel.jsx')}>
+        <img src={playButton} alt="Play" style={{ width: '250px', height: 'auto' }} />
+      </button>
     </div>
   );
 }
@@ -156,3 +191,4 @@ const setLocalStorageValue = (key, value) => {
 };
 
 export default Home;
+
