@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
@@ -10,8 +9,8 @@ function Main() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/pickchar" element={<PickChar />} />
-        <Route path="/visualnovel" element={<VisualNovel />} />
+        <Route path="/components/pickchar.jsx" element={<PickChar />} />
+        <Route path="/components/VisualNovel.jsx" element={<VisualNovel />} />
       </Routes>
     </BrowserRouter>
   );
