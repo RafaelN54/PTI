@@ -1,0 +1,43 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.custom-button {
+  background-color: #708fff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: cursive;
+  font-weight: bold;
+}
+  
+.custom-button:hover {
+  background-color: #3e5ed4;
+}
+
+.custom-button:disabled, .cutom-button[disabled]{
+  background-color: #3e5ed4;
+}
+
+.next {
+  background-color: #ff70db;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: cursive;
+}
+
+.next:disabled, .next[disabled]{
+  background-color: #ffcaf1;
+}

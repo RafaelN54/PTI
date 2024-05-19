@@ -1,0 +1,70 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.homescreen {
+  background-image: url('./components/assets/bg-main.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin: none;
+}
+
+div {
+  height: 100px;
+}
+
+.homescreen h1 {
+  margin: auto;
+  font-size: 100px;
+  font-family: cursive;
+  text-align: center;
+  color: rgb(4, 1, 190);
+  -webkit-text-stroke: #22073e;
+  -webkit-text-stroke-width: 3px;
+}
+
+.homescreen button {
+  font-size: 40px;
+  border-radius: 50px;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 80px;
+  left: 40%;
+  font-family: cursive;
+  transition-duration: 0.4s;
+}
+
+.button {
+  background-color: #007bff; /* Blue color */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker blue color */
+}
+
+/* Animation */
+@keyframes buttonAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animated-button {
+  animation-name: buttonAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
