@@ -23,9 +23,9 @@ function StatusBarComponent({ energy, money, affinity }) {
             <div className="flex items-center h-12 mr-5">
                 <FaHeart className="mr-2" /> {/* Icon */}
                 <div className="w-52 h-[22.5px] bg-white border border-black rounded">
-                    <div className="h-[21px] bg-yellow-300 rounded" style={{ width: `${affinityBar}px` }}>Affinity: {affinity}</div>
+                    <div className="h-[21px] bg-yellow-300 rounded" style={{ width: `${affinityBar}px` }}>Affinity:{affinity}</div>
                 </div>
-            </div>
+            </div>  
         </div>
     );
 }
