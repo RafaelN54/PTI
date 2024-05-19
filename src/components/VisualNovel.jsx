@@ -44,9 +44,10 @@ function VisualNovel(){
     const [hasVisitedMakan, setHasVisitedMakan] = useState(1);
     const [hasVisitedWisata, setHasVisitedWisata] = useState(1);
 
-    const [energy, setEnergy] = useState(50);
-    const [money, setMoney] = useState(100);
-    const [afinity, setAfinity] = useState(50);
+    const [energy, setEnergy] = useState(() => parseInt(localStorage.getItem('energy')) || 50);
+    const [money, setMoney] = useState(() => parseInt(localStorage.getItem('money')) || 100);
+    const [affinity, setAffinity] = useState(() => parseInt(localStorage.getItem('affinity')) || 50);
+
     
     useEffect(() => {
         const savedUsername = localStorage.getItem('username');
@@ -65,6 +66,12 @@ function VisualNovel(){
             }
         }
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('energy', energy);
+        localStorage.setItem('money', money);
+        localStorage.setItem('affinity', affinity);
+    }, [energy, money, affinity]);
 
     useEffect(() => {
         // Update time image based on the time of day
@@ -198,7 +205,7 @@ function VisualNovel(){
             } else if (money === 0){
                 newCounterIndex = 142;
                 newCounterValue = 141;
-            } else if (afinity === 0){
+            } else if (affinity === 0){
                 newCounterIndex = 143;
                 newCounterValue = 142;
             } else {
@@ -234,18 +241,18 @@ function VisualNovel(){
         handleCharacterName(newCounterValue);
     }
 
-    const memilih = (index, username, energyTambahan, uangTambahan, afinitasTambahan) => {
+    const memilih = (index, username, energyTambahan, uangTambahan, affinitasTambahan) => {
         setCounterIndex(index);
         setCharName(username);
         setEnergy(energy+energyTambahan > 100? 100 : (energy+energyTambahan < 0? 0 : (energy+energyTambahan)));
         setMoney(money+uangTambahan > 100? 100 : (money+uangTambahan < 0? 0 : (money+uangTambahan)));
-        setAfinity(afinity+afinitasTambahan > 100? 100 : (afinity+afinitasTambahan < 0? 0 : (afinity+afinitasTambahan)));
+        setAffinity(affinity+affinitasTambahan > 100? 100 : (affinity+affinitasTambahan < 0? 0 : (affinity+affinitasTambahan)));
     }
 
 
     return (
         <div className="resto" style={{ backgroundImage: `url(${backgroundIndex})` }}>
-            <StatusBarComponent name="statusBar" energy={energy} money={money} afinity={afinity} />
+            <StatusBarComponent name="statusBar" energy={energy} money={money} affinity={affinity} />
             {counterIndex === 140 && <Pilihan1 memilih={memilih} makan={hasVisitedMakan} wisata={hasVisitedWisata} username={username} />}
             {([55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135].includes(counterIndex)) && <img src={foodImage} style={{ position: 'fixed', bottom: '300px', right: '400px', width: '300px', height: 'auto', borderRadius: '40px' }} />}
             {timeImage && <img src={timeImage} alt="Time Image" style={{ position: 'fixed', bottom: '550px', right: '1440px', width: '80px', zIndex: '10' }} />}

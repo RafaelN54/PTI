@@ -13,6 +13,7 @@ function PickChar() {
     { id: 2, name: 'Girl', imageSrc: girlImage }
   ];
 
+
   useEffect(() => {
     localStorage.setItem('username', name);
   }, [name]);
@@ -52,7 +53,7 @@ function PickChar() {
   function showName(event) {
     event.preventDefault();
     if (name.length <= 10) {
-      window.location.href = '/components/VisualNovel.jsx';
+      window.location.href = '/components/home.jsx';
     }
   }
 

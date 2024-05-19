@@ -1,0 +1,16 @@
+.kamar {
+  background-image: url('./assets/kamar.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin: none;
+}
+
+.weather-box {
+  position: absolute; /* Gunakan posisi absolut untuk penempatan spesifik */
+  top: 10px; /* Atur jarak dari atas */
+  left: -630px; /* Atur jarak dari kiri */
+  padding: 20px;
+  box-sizing: border-box;
+}
