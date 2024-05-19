@@ -5,7 +5,7 @@ import girlImage from './assets/girl.png';
 
 function PickChar() {
   const [name, changeName] = useState("");
-  const [selectedCharacter, setSelectedCharacter] = useState(undefined); // Initially set to undefined
+  const [selectedCharacter, setSelectedCharacter] = useState(undefined);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
 
   const characters = [

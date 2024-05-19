@@ -1,0 +1,45 @@
+.container {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  
+  button:hover {
+    filter:brightness(50%);
+    transition: filter 0.4s;
+  }
+  
+  .headline {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  div.key {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .article {
+    color: #007bff;
+  }
+  
+  .isi {
+    color: #666;
+  }
+  
+  hr {
+    border: 0;
+    height: 1px;
+    background-color: #eaeaea;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  

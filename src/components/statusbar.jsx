@@ -11,13 +11,13 @@ function StatusBarComponent({ energy, money, affinity }) {
             <div className="flex items-center h-12 ml-5">
                 <FaBatteryFull className="mr-2" /> {/* Icon */}
                 <div className="w-52 h-[22.5px] bg-white border border-black rounded">
-                    <div className="h-[21px] bg-blue-300 rounded" style={{ width: `${energyBar}px` }}>Energy: {energy}</div>
+                    <div className="h-[21px] bg-blue-300 rounded" style={{ width: `${energyBar}px` }}>Energy:{energy}</div>
                 </div>
             </div>
             <div className="flex items-center h-12">
                 <FaMoneyBillAlt className="mr-2" /> {/* Icon */}
                 <div className="w-52 h-[22.5px] bg-white border border-black rounded">
-                    <div className="h-[21px] bg-green-500 rounded" style={{ width: `${moneyBar}px` }}>Money: {money}</div>
+                    <div className="h-[21px] bg-green-500 rounded" style={{ width: `${moneyBar}px` }}>Money:{money}</div>
                 </div>
             </div>
             <div className="flex items-center h-12 mr-5">

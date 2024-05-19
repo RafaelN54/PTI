@@ -265,7 +265,7 @@ function VisualNovel(){
                     <h2 style={{ fontFamily: 'cursive' }}>{charName}</h2>
                 </div>
                 <div style={{ backgroundColor: 'pink', opacity: '90%', width: '1521px', height: '134px' }}>
-                    <p style={{ fontFamily: 'cursive', fontWeight: 'bold'  }}>{Dialog[counterIndex]}</p>
+                    <p style={{ fontFamily: 'cursive', fontWeight: 'bold'}}>{Dialog[counterIndex]}</p>
                     <button className="next" style={{ textAlign: 'right' }} onClick={increaseCounter} disabled={counterIndex === 140 || counterIndex === 141 || counterIndex === 142 || counterIndex === 143 || counterIndex === 144}>Next</button>
                 </div>
             </div>
