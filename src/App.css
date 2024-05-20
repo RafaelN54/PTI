@@ -11,18 +11,24 @@
   margin: none;
 }
 
-div {
+div{
   height: 100px;
 }
 
 .homescreen h1 {
   margin: auto;
   font-size: 100px;
-  font-family: cursive;
+  font-family: 'Parisienne';
   text-align: center;
-  color: rgb(4, 1, 190);
-  -webkit-text-stroke: #22073e;
-  -webkit-text-stroke-width: 3px;
+  color: black;
+  -webkit-text-stroke: 3px transparent;
+  text-shadow: 
+    0 0 5px #ADD8E6,
+    0 0 10px #ADD8E6,
+    0 0 15px #ADD8E6,
+    0 0 20px #ADD8E6,
+    0 0 25px #ADD8E6,
+    0 0 30px #ADD8E6;
 }
 
 .homescreen button {
@@ -33,14 +39,15 @@ div {
   position: fixed;
   bottom: 80px;
   left: 40%;
-  font-family: cursive;
+  font-family: 'Concert One';
   transition-duration: 0.4s;
 }
 
+
 .button {
-  background-color: #007bff; /* Blue color */
-  border: none;
-  color: white;
+  background-color: #f0f8ff; /* Warna biru muda */
+  border: 1px solid #f0f8ff; /* Sama dengan warna background */
+  color: #00BFFF; /* Warna teks (biru) */
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -50,12 +57,14 @@ div {
   cursor: pointer;
   border-radius: 8px;
   transition-duration: 0.4s;
+  opacity: 0.8; 
 }
 
 .button:hover {
-  background-color: #0056b3; /* Darker blue color */
+  background-color: #00BFFF;
+  color: white;
+  opacity: 1; 
 }
-
 /* Animation */
 @keyframes buttonAnimation {
   0% { transform: scale(1); }
