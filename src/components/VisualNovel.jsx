@@ -35,6 +35,7 @@ function VisualNovel(){
     const [userImage, setUserImage] = useState(null);
     const [friendBrightness, setFriendBrightness] = useState(100);
     const [userBrightness, setUserBrightness] = useState(50);
+    const [isGameEnded, setIsGameEnded] = useState(false);
 
     const arrayfriend = [0, 1, 3, 5, 7, 8, 9, 10, 11, 15, 17, 19, 22, 24, 27, 29, 34, 37, 39, 40, 41, 43, 45, 47, 49, 51, 56, 58, 59, 63, 64, 67, 68, 71, 73, 75, 77, 78, 81, 83, 86, 88, 90, 94, 96, 98, 99, 102, 103, 104, 107, 109, 110, 112, 113, 115, 116, 119, 120, 122, 123, 125, 127, 128, 131, 132, 134];
     const arrayuser = [2, 4, 6, 12, 16, 18, 21, 23, 26, 28, 30, 32, 33, 35, 38, 42, 44, 46, 48, 55, 57, 60, 61, 62, 65, 66, 70, 74, 76, 79, 80, 82, 84, 85, 87, 92, 95, 97, 100, 101, 105, 106, 108, 111, 114, 118, 121, 126, 129, 130, 133, 135, 136, 137, 138];
@@ -49,7 +50,19 @@ function VisualNovel(){
     const [energy, setEnergy] = useState(() => parseInt(localStorage.getItem('energy')) || 50);
     const [money, setMoney] = useState(() => parseInt(localStorage.getItem('money')) || 100);
     const [affinity, setAffinity] = useState(() => parseInt(localStorage.getItem('affinity')) || 50);
-
+    const goHome = () => {
+        setCounterIndex(0);
+        setBackgroundIndex(bandaraImage);
+        setWaktu(1);
+        setHasVisitedMakan(1);
+        setHasVisitedWisata(1);
+        setEnergy(50);
+        setMoney(100);
+        setAffinity(50);
+        setTime("Pagi");
+        setIsGameEnded(false);
+        window.location.href = '/components/home.jsx';
+    };
     
     useEffect(() => {
         const savedUsername = localStorage.getItem('username');
@@ -229,6 +242,7 @@ function VisualNovel(){
                 newCounterIndex = 144;
                 newCounterValue = 143;
             }
+            setIsGameEnded(true);
         }
 
         setCounterIndex(newCounterIndex);
@@ -291,14 +305,16 @@ function VisualNovel(){
                     <button
                         className="next float-right mt-2 text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
                         onClick={increaseCounter}
-                        disabled={[140, 141, 142, 143, 144].includes(counterIndex)}
-                    >
-                        Next
-                    </button>
+                        disabled={[140, 141, 142, 143, 144].includes(counterIndex)}>Next</button>
+                        </div>
+                    </div>
+                    {([140, 141, 142, 143, 144].includes(counterIndex) && isGameEnded) && (
+                        <div className="center-button-container" style={{ textAlign: 'center', marginTop: '13%' }}>
+                            <button className="custom-button-ending" onClick={goHome}>Go Back Home</button>
+                        </div>
+                    )}
                 </div>
-            </div>
-        </div>
-    );
+            );
     
     
 }

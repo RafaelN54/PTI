@@ -42,3 +42,28 @@
 .next:disabled, .next[disabled]{
   background-color: #ffcaf1;
 }
+
+.custom-button-ending {
+  background-color: #ffa070;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: cursive;
+  font-weight: bold;
+}
+  
+.custom-button-ending:hover {
+  background-color: #d43e3e;
+  scale: 102%;
+}
+
+.custom-button-ending:disabled, .cutom-button[disabled]{
+  background-color: #d4433e;
+}
