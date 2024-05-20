@@ -128,7 +128,7 @@ function Home() {
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
       </button>
       {showOptions && (
-        <div className="options-box fixed top-[10%] left-[35%] w-[30%] h-[80%] bg-white border-black border-solid border-4 flex flex-col items-center justify-center">
+        <div className="options-box fixed top-[10%] left-[35%] w-[30%] h-[80%] p-4 shadow-lg rounded-xl bg-gradient-to-r from-blue-300 via-pink-200 to-purple-300 border-black border-solid border-4 flex flex-col items-center justify-center">
           <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>Close</button>
           <ul>
             <li>

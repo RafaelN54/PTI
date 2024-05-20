@@ -269,26 +269,37 @@ function VisualNovel(){
 
 
     return (
-        <div className="resto" style={{ backgroundImage: `url(${backgroundIndex})` }}>
+        <div className="resto bg-cover" style={{ backgroundImage: `url(${backgroundIndex})` }}>
             <StatusBarComponent name="statusBar" energy={energy} money={money} affinity={affinity} />
             {counterIndex === 140 && <Pilihan1 memilih={memilih} makan={hasVisitedMakan} wisata={hasVisitedWisata} username={username} />}
-            {([55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135].includes(counterIndex)) && <img src={foodImage} style={{ position: 'fixed', bottom: '300px', right: '400px', width: '300px', height: 'auto', borderRadius: '40px' }} />}
-            {timeImage && <img src={timeImage} alt="Time Image" style={{ position: 'fixed', bottom: '550px', right: '1440px', width: '80px', zIndex: '10' }} />}
-            <div style={{ position: 'fixed', bottom: "30px", width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                <img src={userImage} alt="My Image" style={{ width: '400px', height: 'auto', filter: `brightness(${userBrightness}%)` }} />
-                <img src={friendImage} alt="Friendly Image" style={{ width: '270px', height: 'auto', marginRight: '150px', filter: `brightness(${friendBrightness}%)` }} />
+            {([55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135].includes(counterIndex)) && (
+                <img src={foodImage} className="fixed bottom-[300px] right-[400px] w-[300px] h-auto rounded-xl mr-[230px] transition-transform duration-300 ease-in-out transform hover:scale-105" />
+            )}
+            {timeImage && (
+                <img src={timeImage} alt="Time Image" className="fixed bottom-[550px] right-[1440px] w-[80px] z-10 transition-opacity duration-300 ease-in-out opacity-90 hover:opacity-100" />
+            )}
+            <div className="fixed bottom-[30px] w-full flex justify-between items-end">
+                <img src={userImage} alt="My Image" className="w-[400px] h-auto" style={{ width: '400px', height: 'auto', filter: `brightness(${userBrightness}%)` }} />
+                <img src={friendImage} alt="Friendly Image" className="w-[270px] h-auto mr-[150px]" style={{ width: '270px', height: 'auto', marginRight: '150px', filter: `brightness(${friendBrightness}%)` }} />
             </div>
-            <div style={{ position: 'fixed', bottom: "100px", width: '100%' }}>
-                <div style={{ height: '40px', marginBottom: '-16px', backgroundColor: 'white', width: '120px', opacity: '80%' }}>
-                    <h2 style={{ fontFamily: 'cursive' }}>{charName}</h2>
+            <div className="fixed bottom-[50px] w-full flex flex-col items-center">
+                <div className="bg-white w-[200px] opacity-80 rounded-t-lg p-1 text-center">
+                    <h1 className="font-cursive">{charName}</h1>
                 </div>
-                <div style={{ backgroundColor: 'pink', opacity: '90%', width: '1521px', height: '134px' }}>
-                    <p style={{ fontFamily: 'cursive', fontWeight: 'bold' }}>{Dialog[counterIndex]}</p>
-                    <button className="next" style={{ textAlign: 'right' }} onClick={increaseCounter} disabled={counterIndex === 140 || counterIndex === 141 || counterIndex === 142 || counterIndex === 143 || counterIndex === 144}>Next</button>
+                <div className="bg-pink-300 opacity-90 w-[1521px] h-[400px] p-4 rounded-lg shadow-lg ">
+                    <p className="font-cursive font-bold">{Dialog[counterIndex]}</p>
+                    <button
+                        className="next float-right mt-2 text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
+                        onClick={increaseCounter}
+                        disabled={[140, 141, 142, 143, 144].includes(counterIndex)}
+                    >
+                        Next
+                    </button>
                 </div>
             </div>
         </div>
     );
+    
     
 }
 
