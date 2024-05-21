@@ -116,13 +116,13 @@
   }
 
   .character-container {
-    margin-right: 200px;
+    margin-right: 100px;
     margin-top: 80px;
     max-width: 150px;
   }
 
   .name-form {
-    margin-top: 250px; /* Adjust margin for smaller screens */
+    margin-top: 150px; /* Adjust margin for smaller screens */
   }
 }
 
