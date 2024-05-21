@@ -9,7 +9,6 @@ import linkedinImage from './assets/linkedin.png';
 import logoImage from './assets/logo.png';
 
 const AboutUs = () => {
-  // Array of data for each card
   const cardData = [
     {
       name: "Felicia Sabatini Gunawan",

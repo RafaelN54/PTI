@@ -12,7 +12,6 @@
 
   .pick{
     font-size: 40px;
-    font-family: cursive;
   }
 
   .pickcharpage {
@@ -59,9 +58,6 @@
       margin: 0;
     }
     
-    h3 {
-      font-family: cursive;
-    }
 
     .name-form {
       margin-top: 400px;
