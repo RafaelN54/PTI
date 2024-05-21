@@ -116,8 +116,9 @@
   }
 
   .character-container {
+    margin-right: 200px;
     margin-top: 80px;
-    max-width: 200px;
+    max-width: 100px;
   }
 
   .name-form {
