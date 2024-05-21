@@ -147,7 +147,7 @@ function Home() {
               </button>
             </li>
             <li> 
-            <button onClick={() => { setShowAboutUs(true); setShowNews(false); setShowMovie(false); setShowCurrencyConverter(false); }} className="aboutus-button transition duration-300 hover:scale-105">
+            <button onClick={() => navigate('/components/about-us.jsx')} className="aboutus-button transition duration-300 hover:scale-105">
              < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
             </button>    
             </li>

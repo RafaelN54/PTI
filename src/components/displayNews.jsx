@@ -10,7 +10,7 @@ function DisplayNews() {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+          throw new Error(`Limit for today`);
         }
         return response.json();
       })

@@ -39,6 +39,7 @@ const MoviesContainer = () => {
           <div className="movie-details">
             <div className="box">
               <div className="title">{movie.original_title}</div>
+              <br />
               <div className="rating">Rating: {movie.vote_average}</div>
             </div>
             <div className="overview">{movie.overview}</div>
