@@ -31,24 +31,24 @@
   width: 220px;
   height: auto;
   margin-left: -20px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .dialog-friend{
   width: 145px;
   height: auto;
   margin-left: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .dialog-box{
   width: 300px;
-  height: 200px;
-  margin-bottom: 30px;
+  min-height: 150px;
+  margin-bottom: 50px;
 }
 
 .gbr {
-  margin-left: 80px;
+  margin-left: 70px;
   margin-top: 70px;
   width: 270px;
   height: auto;
@@ -124,8 +124,8 @@
 }
 .dialog-box{
   width: 1521px;
-  height: 500px;
-  margin-bottom: 30px;
+  min-height: 150px;
+  margin-bottom: 50px;
 }
 .gbr {
   margin-left: 600px;

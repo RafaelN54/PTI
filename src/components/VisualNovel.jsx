@@ -295,7 +295,7 @@ function VisualNovel(){
                 <img src={userImage} alt="My Image" className="dialog-user" style={{ filter: `brightness(${userBrightness}%)` }} />
                 <img src={friendImage} alt="Friendly Image" className="dialog-friend" style={{marginRight: '150px', filter: `brightness(${friendBrightness}%)` }} />
             </div>
-            <div className="fixed bottom-[70px] w-full flex flex-col items-center">
+            <div className="fixed bottom-[90px] w-full flex flex-col items-center">
                 <div className="bg-white w-[200px] opacity-80 rounded-t-lg p-1 text-center">
                     <h1 className="font-cursive">{charName}</h1>
                 </div>
