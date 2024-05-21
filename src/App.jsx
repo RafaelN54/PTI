@@ -6,7 +6,7 @@ function App() {
     <div className='homescreen'>
       <h1 className='judul'>Hello, Makassar!</h1>
       <button 
-        className='button animated-button'
+        className='main animated-button'
         onClick={() => window.location.href = '/components/pickchar.jsx'}
       >
         Press to Start
