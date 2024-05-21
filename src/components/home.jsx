@@ -109,7 +109,7 @@ function Home() {
   return (
     <div className="kamar bg-cover bg-center h-screen w-screen relative flex flex-col justify-center">
       <StatusBarComponent name="statusBar" energy={energy} money={money} affinity={affinity} />
-      <div className="weather-box w-[150px] h-[200px] bg-blue-300 shadow-lg rounded-xl m-auto relative px-10 py-2 ">
+      <div className="weather-box w-[130px] h-[190px] bg-blue-300 shadow-lg rounded-xl m-auto relative px-10 py-2 ">
         <div className="flex justify-between w-full">
           <div className="w-full my-2 mx-auto flex flex-col items-start">
             <div>
