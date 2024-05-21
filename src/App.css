@@ -11,6 +11,10 @@
   margin: none;
 }
 
+div{
+  height: 100px;
+}
+
 .judul {
   margin: auto;
   font-size: 100px;
@@ -92,7 +96,7 @@
   padding: 15px;
   text-align: center;
   position: fixed;
-  left: 25%;
+  left: 22%;
   font-family: 'Concert One';
   transition-duration: 0.4s;
 }
