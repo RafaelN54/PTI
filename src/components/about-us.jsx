@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Import Link from React Router
 import peliImage from './assets/peli.jpg';
 import mekelImage from './assets/mekel.jpg';
 import rapImage from './assets/rap.jpg';
-import kellenImage from './assets/kellen.jpg';
+import kellenImage from './assets/kellen.jpeg';
 import igImage from './assets/ig.png';
 import linkedinImage from './assets/linkedin.png';
 import logoImage from './assets/logo.png';

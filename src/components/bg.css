@@ -4,5 +4,20 @@
     height: 100vh;
     width: 100vw;
   }
+/* status-bar.css */
+.status {
+  flex-direction: column;
+}
 
-  
+.bar {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .status {
+      flex-direction: row;
+  }
+  .bar {
+      margin-bottom: 0;
+  }
+}

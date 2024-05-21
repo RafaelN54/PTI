@@ -140,6 +140,10 @@ function Home() {
       <div className="flex items-center justify-center bottom-10">
         {showBubbleChat && (<BubbleChat message={bubbleChatMessage} position="" style={bubbleChatPosition} />)}
       </div>
+      <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
+        onClick={() => navigate('/components/VisualNovel.jsx')}>
+        <img src={playButton} alt="Play" style={{ width: '250px', height: 'auto' }} />
+        </button>
       <button className="phone-button absolute bottom-4 left-4 transition duration-300 hover:scale-105" onClick={() => setShowOptions(!showOptions)}>
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
       </button>
@@ -188,10 +192,7 @@ function Home() {
         <CurrencyConverter />
         </div>
         )}
-        <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
-        onClick={() => navigate('/components/VisualNovel.jsx')}>
-        <img src={playButton} alt="Play" style={{ width: '250px', height: 'auto' }} />
-        </button>
+
         </div>
         );
         }
