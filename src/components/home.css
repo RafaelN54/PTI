@@ -10,7 +10,7 @@
 .weather-box {
   position: absolute; /* Gunakan posisi absolut untuk penempatan spesifik */
   top: -90px; /* Atur jarak dari atas */
-  left: 130px; /* Atur jarak dari kiri */
+  left: 125px; /* Atur jarak dari kiri */
   box-sizing: border-box;
 }
 
