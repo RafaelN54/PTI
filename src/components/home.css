@@ -9,9 +9,8 @@
 
 .weather-box {
   position: absolute; /* Gunakan posisi absolut untuk penempatan spesifik */
-  top: 10px; /* Atur jarak dari atas */
-  left: -630px; /* Atur jarak dari kiri */
-  padding: 20px;
+  top: -90px; /* Atur jarak dari atas */
+  left: 120px; /* Atur jarak dari kiri */
   box-sizing: border-box;
 }
 
@@ -39,3 +38,29 @@
 }
 
 
+.phone-button {
+  width: 100px;
+  height: auto;
+}
+.play-button {
+  width: 150px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .phone-button {
+    width: 150px;
+    height: auto;
+}
+  .play-button {
+    width: 250px;
+    height: auto;
+  }
+  .weather-box {
+    position: absolute; /* Gunakan posisi absolut untuk penempatan spesifik */
+    top: 10px; /* Atur jarak dari atas */
+    left: -630px; /* Atur jarak dari kiri */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
