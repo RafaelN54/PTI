@@ -11,10 +11,6 @@
   margin: none;
 }
 
-div{
-  height: 100px;
-}
-
 .judul {
   margin: auto;
   font-size: 100px;
@@ -90,12 +86,13 @@ div{
 }
 
 .homescreen button {
+  bottom: 20%;
   font-size: 30px;
   border-radius: 30px;
   padding: 15px;
   text-align: center;
   position: fixed;
-  left: 30%;
+  left: 25%;
   font-family: 'Concert One';
   transition-duration: 0.4s;
 }
