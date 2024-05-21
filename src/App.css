@@ -80,7 +80,7 @@ div{
 
 @media screen and (max-width: 768px) {
 .judul{
-  font-size: 35px;
+  font-size: 50px;
 }
 
 .main{
@@ -90,13 +90,12 @@ div{
 }
 
 .homescreen button {
-  font-size: 20px;
+  font-size: 30px;
   border-radius: 30px;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   position: fixed;
-  bottom: 80px;
-  left: 20%;
+  left: 30%;
   font-family: 'Concert One';
   transition-duration: 0.4s;
 }
