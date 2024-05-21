@@ -59,7 +59,7 @@ function PickChar() {
 
   return (
     <div className='pickcharpage p-8'>
-      <h1 className='text-4xl font-bold mb-10'>Pick your Character</h1>
+      <h1 className='pick font-bold mb-10'>Pick your Character</h1>
 
       {/* Character Selection */}
       <div className="character-container flex space-x-4">
