@@ -14,7 +14,6 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 8px;
-  font-family: 'cursive';
   font-weight: bold;
 }
   
@@ -36,7 +35,6 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 8px;
-  font-family: 'cursive';
 }
 
 .next:disabled, .next[disabled]{
@@ -55,7 +53,6 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 8px;
-  font-family: 'cursive';
   font-weight: bold;
 }
   
