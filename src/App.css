@@ -8,19 +8,14 @@
   background-position: center;
   height: 100vh;
   width: 100vw;
-  text-align: center;
   margin: none;
-}
-
-h1 {
-  font-size: 2em;
 }
 
 div{
   height: 100px;
 }
 
-.homescreen h1 {
+.homescreen .judul {
   margin: auto;
   font-size: 100px;
   font-family: 'Parisienne';
@@ -57,8 +52,7 @@ div{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 1em;
+  font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
