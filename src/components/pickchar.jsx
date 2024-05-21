@@ -7,12 +7,12 @@ function PickChar() {
   const [name, changeName] = useState("");
   const [selectedCharacter, setSelectedCharacter] = useState(undefined);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // New state for loading indicator
 
   const characters = [
     { id: 1, name: 'Boy', imageSrc: boyImage },
     { id: 2, name: 'Girl', imageSrc: girlImage }
   ];
+
 
   useEffect(() => {
     localStorage.setItem('username', name);
@@ -53,16 +53,13 @@ function PickChar() {
   function showName(event) {
     event.preventDefault();
     if (name.length <= 10) {
-      setIsLoading(true); // Set loading state to true
-      setTimeout(() => {
-        window.location.href = '/components/home.jsx';
-      }, 2000); // Simulating a delay for demonstration purpose, replace with actual transition logic
+      window.location.href = '/components/home.jsx';
     }
   }
 
   return (
     <div className='pickcharpage p-8'>
-      <h1 className='text-5xl font-bold mb-10 mt-10'>Pick your Character</h1>
+      <h1 className='text-5xl font-bold mb-10'>Pick your Character</h1>
 
       {/* Character Selection */}
       <div className="character-container flex space-x-4">
@@ -102,13 +99,6 @@ function PickChar() {
           </button>
         </form>
       </div>
-
-      {/* Loading indicator */}
-      {isLoading && (
-        <div className="loading-overlay">
-          <div className="loading-spinner"></div>
-        </div>
-      )}
     </div>
   );
 }

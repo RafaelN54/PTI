@@ -19,13 +19,18 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
+// Joke API URL
+const jokeApiUrl = 'https://official-joke-api.appspot.com/random_joke';
+
 function BubbleChat({ message, position }) {
   return (
-    <div className={`bubble-chat ${position}`}>
+    <div className={`bubble-chat ${position}`} style={{ position: 'absolute', backgroundColor: '#ffffff', padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
       {message}
     </div>
   );
 }
+
+
 
 function Home() {
   const [weather, setWeather] = useState({});
@@ -38,9 +43,9 @@ function Home() {
   const [showMovie, setShowMovie] = useState(false);
   const [showCurrencyConverter, setShowCurrencyConverter] = useState(false);
   const [showBubbleChat, setShowBubbleChat] = useState(false);
-  const [showAboutUs, setShowAboutUs] = useState(false);
   const [bubbleChatMessage, setBubbleChatMessage] = useState("");
   const [bubbleChatPosition, setBubbleChatPosition] = useState({ top: 0, left: 0 });
+  const [joke, setJoke] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,14 +84,25 @@ function Home() {
     setLocalStorageValue("affinity", affinity);
   }, [affinity]);
 
+  useEffect(() => {
+    // Fetch a joke when the component mounts
+    fetchJoke();
+  }, []);
+
+  const fetchJoke = () => {
+    fetch(jokeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        setJoke(`${data.setup} ${data.punchline}`);
+      })
+      .catch(error => console.error('Error fetching joke:', error));
+  };
+
   const handleCharacterClick = (event) => {
-    const rect = event.target.getBoundingClientRect();
-    const position = {
-      top: rect.top + window.pageYOffset,
-      left: rect.left + window.pageXOffset + rect.width,
-    };
-    setBubbleChatPosition(position);
-    setBubbleChatMessage("Hello! How can I help you?");
+    const top = 20; // Adjust this value as needed
+    const left = '50%'; // Position in the center horizontally
+    setBubbleChatPosition({ top, left });
+    setBubbleChatMessage(joke); // Set the joke as the bubble chat message
     setShowBubbleChat(!showBubbleChat);
   };
 
@@ -121,74 +137,73 @@ function Home() {
       <div className="flex items-center justify-center flex-1">
         <img src={userImage} alt="My Image" style={{ width: '400px', height: 'auto', marginBottom:'-10px'}} onClick={handleCharacterClick} />
       </div>
-      <div className="flex items-center justify-center">
-      {showBubbleChat && (<BubbleChat message={bubbleChatMessage} position="" style={bubbleChatPosition} />)}
+      <div className="flex items-center justify-center bottom-10">
+        {showBubbleChat && (<BubbleChat message={bubbleChatMessage} position="" style={bubbleChatPosition} />)}
       </div>
       <button className="phone-button absolute bottom-4 left-4 transition duration-300 hover:scale-105" onClick={() => setShowOptions(!showOptions)}>
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
       </button>
       {showOptions && (
         <div className="options-box fixed top-[10%] left-[35%] w-[30%] h-[80%] p-4 shadow-lg rounded-xl bg-gradient-to-r from-blue-200 via-pink-100 to-purple-200 border-black border-solid border-4 flex flex-col items-center justify-center">
-          <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>Close</button>
-          <ul>
-            <li>
-              <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
-                <img src={newsImage} alt="News" style={{ width: '100px', height: 'auto' }} />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
-                <img src={movieImage} alt="Movie" style={{ width: '100px', height: 'auto' }} />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
-              <img src={calculatorImage} alt="Calculator" style={{ width: '100px', height: 'auto' }} />
-              </button>
-            </li>
-            <li> 
-            <button onClick={() => navigate('/components/about-us.jsx')} className="aboutus-button transition duration-300 hover:scale-105">
-             < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
-            </button>    
-            </li>
-          </ul>
+        <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>Close</button>
+        <ul>
+        <li>
+        <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
+        <img src={newsImage} alt="News" style={{ width: '100px', height: 'auto' }} />
+        </button>
+        </li>
+        <li>
+        <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
+        <img src={movieImage} alt="Movie" style={{ width: '100px', height: 'auto' }} />
+        </button>
+        </li>
+        <li>
+        <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
+        <img src={calculatorImage} alt="Calculator" style={{ width: '100px', height: 'auto' }} />
+        </button>
+        </li>
+        <li>
+        <button onClick={() => navigate('/components/about-us.jsx')} className="aboutus-button transition duration-300 hover:scale-105">
+        < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
+        </button>
+        </li>
+        </ul>
         </div>
-      )}
-      {showNews && (
+        )}
+        {showNews && (
         <div className="show-box">
-          <button className="close-button" onClick={() => setShowNews(false)}>Close</button>
-          <DisplayNews />
+        <button className="close-button" onClick={() => setShowNews(false)}>Close</button>
+        <DisplayNews />
         </div>
-      )}
-      {showMovie&& (
+        )}
+        {showMovie&& (
         <div className="show-box">
-          <button className="close-button" onClick={() => setShowMovie(false)}>Close</button>
-          <MovieContainer />
+        <button className="close-button" onClick={() => setShowMovie(false)}>Close</button>
+        <MovieContainer />
         </div>
-      )}
-      {showCurrencyConverter && (
+        )}
+        {showCurrencyConverter && (
         <div className="show-box">
-          <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>Close</button>
-          <CurrencyConverter />
+        <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>Close</button>
+        <CurrencyConverter />
         </div>
-      )}
-      <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
+        )}
+        <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
         onClick={() => navigate('/components/VisualNovel.jsx')}>
         <img src={playButton} alt="Play" style={{ width: '250px', height: 'auto' }} />
-      </button>
-    </div>
-  );
-}
-
-const getLocalStorageValue = (key, defaultValue) => {
-  const saved = localStorage.getItem(key);
-  const initial = JSON.parse(saved);
-  return initial || defaultValue;
-};
-
-const setLocalStorageValue = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
-};
-
-export default Home;
-
+        </button>
+        </div>
+        );
+        }
+        
+        const getLocalStorageValue = (key, defaultValue) => {
+        const saved = localStorage.getItem(key);
+        const initial = JSON.parse(saved);
+        return initial || defaultValue;
+        };
+        
+        const setLocalStorageValue = (key, value) => {
+        localStorage.setItem(key, JSON.stringify(value));
+        };
+        
+        export default Home;

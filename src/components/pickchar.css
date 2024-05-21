@@ -96,16 +96,39 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Add styles for smaller screens */
+@media screen and (max-width: 768px) {
+  h1{
+    font-size: 20px;
+    font-family: cursive;
+  }
+  .pickcharpage {
+    padding: 0px; /* Adjust padding for smaller screens */
+  }
 
-    @media only screen and (max-width: 600px) {
-      .character-container {
-        flex-direction: column;
-      }
-      .character {
-        margin-bottom: 10px; /* Adjust spacing between characters */
-      }
-      .name-form {
-        margin-top: 50px; /* Adjust margin from the character selection */
-      }
-    }
-    
+  .character-container {
+    flex-direction: column; /* Stack characters vertically on smaller screens */
+  }
+
+  .character-container {
+    margin-right: 200px;
+    margin-top: 80px;
+    max-width: 200px;
+  }
+
+  .name-form {
+    margin-top: 250px; /* Adjust margin for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .character-container {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .name-form {
+    margin-top: 420px;
+  }
+}
