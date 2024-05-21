@@ -17,7 +17,7 @@
 .show-box {
   position: fixed;
   top: 10%;
-  left: 35%;
+  left: 40%;
   width: 50%;
   height: 80%;
   background-color: white;
@@ -25,6 +25,36 @@
   justify-content: center;
   display: flex;
   overflow: auto; /* Ensure scrollability if content overflows */
+}
+
+.dialog-user{
+  width: 220px;
+  height: auto;
+  margin-left: -20px;
+}
+
+.dialog-friend{
+  width: 145px;
+  height: auto;
+  margin-left: 150px;
+}
+
+.dialog-box{
+  width: 450px;
+  height: 200px;
+}
+
+.gbr {
+  margin-left: 110px;
+  margin-top: 50px;
+  width: 270px;
+  height: auto;
+  border-radius: 1rem; /* Equivalent to 'rounded-xl' */
+  transition: transform 300ms ease-in-out; /* Equivalent to 'transition-transform duration-300 ease-in-out' */
+}
+
+.gbr:hover {
+  transform: scale(1.05); /* Equivalent to 'hover:scale-105' */
 }
 
 .show-box .close-button {
@@ -77,5 +107,28 @@
   justify-content: center;
   display: flex;
   overflow: auto; /* Ensure scrollability if content overflows */
+}
+
+.dialog-user{
+  width: 400px;
+  height: auto;
+}
+
+.dialog-friend{
+  width: 270px;
+  height: auto;
+  right: 150px;
+}
+.dialog-box{
+  width: 1521px;
+  height: 500px;
+}
+.gbr {
+  margin-left: 600px;
+  margin-top: 50px;
+  width: 300px;
+  height: auto;
+  border-radius: 1rem; /* Equivalent to 'rounded-xl' */
+  transition: transform 300ms ease-in-out; /* Equivalent to 'transition-transform duration-300 ease-in-out' */
 }
 }

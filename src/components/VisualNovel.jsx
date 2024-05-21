@@ -285,22 +285,21 @@ function VisualNovel(){
     return (
         <div className="resto bg-cover" style={{ backgroundImage: `url(${backgroundIndex})` }}>
             <StatusBarComponent name="statusBar" energy={energy} money={money} affinity={affinity} />
-            {counterIndex === 140 && <Pilihan1 memilih={memilih} makan={hasVisitedMakan} wisata={hasVisitedWisata} username={username} />}
             {([55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135].includes(counterIndex)) && (
-                <img src={foodImage} className="fixed bottom-[300px] right-[400px] w-[300px] h-auto rounded-xl mr-[230px] transition-transform duration-300 ease-in-out transform hover:scale-105" />
+                <img src={foodImage} className="gbr" />
             )}
             {timeImage && (
                 <img src={timeImage} alt="Time Image" className="fixed bottom-[550px] right-[1440px] w-[80px] z-10 transition-opacity duration-300 ease-in-out opacity-90 hover:opacity-100" />
             )}
             <div className="fixed bottom-[30px] w-full flex justify-between items-end">
-                <img src={userImage} alt="My Image" className="w-[400px] h-auto" style={{ width: '400px', height: 'auto', filter: `brightness(${userBrightness}%)` }} />
-                <img src={friendImage} alt="Friendly Image" className="w-[270px] h-auto mr-[150px]" style={{ width: '270px', height: 'auto', marginRight: '150px', filter: `brightness(${friendBrightness}%)` }} />
+                <img src={userImage} alt="My Image" className="dialog-user" style={{ filter: `brightness(${userBrightness}%)` }} />
+                <img src={friendImage} alt="Friendly Image" className="dialog-friend" style={{marginRight: '150px', filter: `brightness(${friendBrightness}%)` }} />
             </div>
             <div className="fixed bottom-[50px] w-full flex flex-col items-center">
                 <div className="bg-white w-[200px] opacity-80 rounded-t-lg p-1 text-center">
                     <h1 className="font-cursive">{charName}</h1>
                 </div>
-                <div className="bg-pink-300 opacity-90 w-[1521px] h-[400px] p-4 rounded-lg shadow-lg ">
+                <div className="dialog-box bg-pink-300 opacity-90 p-4 rounded-lg shadow-lg ">
                     <p className="font-cursive font-bold">{Dialog[counterIndex]}</p>
                     <button
                         className="next float-right mt-2 text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
@@ -313,10 +312,9 @@ function VisualNovel(){
                             <button className="custom-button-ending" onClick={goHome}>Go Back Home</button>
                         </div>
                     )}
+                {counterIndex === 140 && <Pilihan1 memilih={memilih} makan={hasVisitedMakan} wisata={hasVisitedWisata} username={username} />}
                 </div>
             );
-    
-    
 }
 
 export default VisualNovel;
