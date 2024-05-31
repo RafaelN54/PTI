@@ -12,12 +12,19 @@
 .bar {
   margin-bottom: 1rem;
 }
-
+.background-main {
+  height: 2500px;
+  background-color: #87ceeb; /* This color matches the bg-blue-200 color */
+}
 @media (min-width: 768px) {
   .status {
       flex-direction: row;
   }
   .bar {
       margin-bottom: 0;
+  }
+  .background-main {
+    height: 728px;
+    background-color: #87ceeb; /* This color matches the bg-blue-200 color */
   }
 }

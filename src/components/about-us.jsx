@@ -49,14 +49,14 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="bg-blue-200 h-screen flex flex-col items-center">
+    <div className="background-main flex flex-col items-center relative">
       <div className="absolute top-5 w-full flex flex-col items-center justify-center md:flex-row md:justify-between p-4">
         <h1 className="text-white text-4xl md:text-6xl font-semibold">About Xiomay</h1>
         <img src={logoImage} alt="About Xiomay" className="w-24 h-24" />
       </div>
       <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-40 md:mt-32 w-full px-4">
         {cardData.map((data, index) => (
-          <div key={index} className="w-[300px] h-[500px] bg-white rounded-lg overflow-hidden shadow-md m-4" style={{ backgroundColor: data.color }}>
+          <div key={index} className="card w-[300px] h-[500px] bg-white rounded-lg overflow-hidden shadow-md m-4" style={{ backgroundColor: data.color }}>
             <div className="w-full h-[160px] bg-red-700 flex items-center justify-center relative">
               <div className="w-[100px] h-[100px] rounded-full bg-white relative overflow-hidden">
                 <img src={data.image} alt="user" className="w-full h-full object-cover" />
@@ -80,9 +80,11 @@ const AboutUs = () => {
                 </a>
               </div>
             </div>
-            <Link to="/components/home.jsx" className="custom-button transition-transform transform hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8">Go to Home</Link>
           </div>
         ))}
+      </div>
+      <div className="absolute bottom-0 right-8 md:right-12">
+        <Link to="/components/home.jsx" className="custom-button transition-transform transform hover:scale-105">Go to Home</Link>
       </div>
     </div>
   );
