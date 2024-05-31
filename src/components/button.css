@@ -64,3 +64,15 @@
 .custom-button-ending:disabled, .cutom-button[disabled]{
   background-color: #d4433e;
 }
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}

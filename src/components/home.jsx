@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import StatusBarComponent from "./statusbar.jsx";
 import boyImage from './assets/boy.png';
@@ -30,8 +30,6 @@ function BubbleChat({ message, position }) {
   );
 }
 
-
-
 function Home() {
   const [weather, setWeather] = useState({});
   const [energy, setEnergy] = useState(() => getLocalStorageValue("energy", 50));
@@ -47,6 +45,10 @@ function Home() {
   const [bubbleChatPosition, setBubbleChatPosition] = useState({ top: 0, left: 0 });
   const [joke, setJoke] = useState('');
   const navigate = useNavigate();
+  const optionsRef = useRef(null);
+  const newsRef = useRef(null);
+  const movieRef = useRef(null);
+  const currencyRef = useRef(null);
 
   useEffect(() => {
     const savedCharacterId = localStorage.getItem('selectedCharacter');
@@ -87,6 +89,28 @@ function Home() {
   useEffect(() => {
     // Fetch a joke when the component mounts
     fetchJoke();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+      if (newsRef.current && !newsRef.current.contains(event.target)) {
+        setShowNews(false);
+      }
+      if (movieRef.current && !movieRef.current.contains(event.target)) {
+        setShowMovie(false);
+      }
+      if (currencyRef.current && !currencyRef.current.contains(event.target)) {
+        setShowCurrencyConverter(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const fetchJoke = () => {
@@ -143,68 +167,67 @@ function Home() {
       <button className="play-button transition duration-300 hover:scale-105 absolute bottom-4 right-4 md:bottom-8 md:right-8"
         onClick={() => navigate('/components/VisualNovel.jsx')}>
         <img src={playButton} alt="Play" style={{ width: '250px', height: 'auto' }} />
-        </button>
+      </button>
       <button className="phone-button absolute bottom-4 left-4 transition duration-300 hover:scale-105" onClick={() => setShowOptions(!showOptions)}>
         <img src={phoneImage} alt="Phone" style={{ width: '150px', height: 'auto' }} />
       </button>
       {showOptions && (
-        <div className="options-box fixed top-[10%] left-[35%] w-[30%] h-[80%] p-4 shadow-lg rounded-xl bg-gradient-to-r from-blue-200 via-pink-100 to-purple-200 border-black border-solid border-4 flex flex-col items-center justify-center">
-        <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>Close</button>
-        <ul>
-        <li>
-        <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
-        <img src={newsImage} alt="News" style={{ width: '100px', height: 'auto' }} />
-        </button>
-        </li>
-        <li>
-        <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
-        <img src={movieImage} alt="Movie" style={{ width: '100px', height: 'auto' }} />
-        </button>
-        </li>
-        <li>
-        <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
-        <img src={calculatorImage} alt="Calculator" style={{ width: '100px', height: 'auto' }} />
-        </button>
-        </li>
-        <li>
-        <button onClick={() => navigate('/components/about-us.jsx')} className="aboutus-button transition duration-300 hover:scale-105">
-        < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
-        </button>
-        </li>
-        </ul>
+        <div ref={optionsRef} className="options-box">
+          <button className="close-button absolute top-2 right-2" onClick={() => setShowOptions(false)}>x</button>
+          <ul>
+            <li>
+              <button onClick={() => { setShowNews(true); setShowMovie(false); setShowCurrencyConverter(false); }} className="news-button transition duration-300 hover:scale-105">
+                <img src={newsImage} alt="News" style={{ width: '100px', height: 'auto' }} />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => { setShowMovie(true); setShowNews(false); setShowCurrencyConverter(false); }} className="movie-button transition duration-300 hover:scale-105">
+                <img src={movieImage} alt="Movie" style={{ width: '100px', height: 'auto' }} />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => { setShowCurrencyConverter(true); setShowNews(false); setShowMovie(false); }} className="currency-button transition duration-300 hover:scale-105">
+                <img src={calculatorImage} alt="Calculator" style={{ width: '100px', height: 'auto' }} />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => navigate('/components/about-us.jsx')} className="aboutus-button transition duration-300 hover:scale-105">
+                < img src={aboutusImage} alt="About Us" style={{ width: '100px', height: 'auto', marginTop:'20px' }} />
+              </button>
+            </li>
+          </ul>
         </div>
-        )}
-        {showNews && (
-        <div className="show-box">
-        <button className="close-button" onClick={() => setShowNews(false)}>Close</button>
-        <DisplayNews />
+      )}
+      {showNews && (
+        <div ref={newsRef} className="show-box">
+          <button className="close-button" onClick={() => setShowNews(false)}>×</button>
+          <DisplayNews />
         </div>
-        )}
-        {showMovie&& (
-        <div className="show-box">
-        <button className="close-button" onClick={() => setShowMovie(false)}>Close</button>
-        <MovieContainer />
+      )}
+      {showMovie && (
+        <div ref={movieRef} className="show-box">
+          <button className="close-button" onClick={() => setShowMovie(false)}>×</button>
+          <MovieContainer />
         </div>
-        )}
-        {showCurrencyConverter && (
-        <div className="show-box">
-        <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>Close</button>
-        <CurrencyConverter />
+      )}
+      {showCurrencyConverter && (
+        <div ref={currencyRef} className="show-box">
+          <button className="close-button" onClick={() => setShowCurrencyConverter(false)}>×</button>
+          <CurrencyConverter />
         </div>
-        )}
+      )}
+    </div>
+  );
+}
 
-        </div>
-        );
-        }
-        
-        const getLocalStorageValue = (key, defaultValue) => {
-        const saved = localStorage.getItem(key);
-        const initial = JSON.parse(saved);
-        return initial || defaultValue;
-        };
-        
-        const setLocalStorageValue = (key, value) => {
-        localStorage.setItem(key, JSON.stringify(value));
-        };
-        
-        export default Home;
+const getLocalStorageValue = (key, defaultValue) => {
+  const saved = localStorage.getItem(key);
+  const initial = JSON.parse(saved);
+  return initial || defaultValue;
+};
+
+const setLocalStorageValue = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+export default Home;

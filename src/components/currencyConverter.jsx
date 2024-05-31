@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './displayNews.css';
 
 function CurrencyConverter() {
   const [rate, setRate] = useState(null);
@@ -26,46 +25,99 @@ function CurrencyConverter() {
   const handleToCurrencyChange = (e) => setToCurrency(e.target.value.toUpperCase());
   const handleAmountChange = (e) => setAmount(e.target.value);
 
+  const styles = {
+    body: {
+      fontFamily: 'Arial, sans-serif',
+      margin: 0,
+      padding: 0,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '20vh',
+    },
+    container: {
+      background: '#fff',
+      padding: '30px',
+      borderRadius: '10px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      maxWidth: '400px',
+      width: '100%',
+      textAlign: 'center',
+    },
+    header: {
+      color: '#333',
+      marginBottom: '80px',
+    },
+    formGroup: {
+      marginBottom: '5px',
+      textAlign: 'left',
+    },
+    label: {
+      display: 'block',
+      marginBottom: '8px',
+      fontWeight: 'bold',
+      color: '#555',
+    },
+    input: {
+      width: '100%',
+      padding: '10px',
+      border: '1px solid #ddd',
+      borderRadius: '5px',
+      boxSizing: 'border-box',
+    },
+    result: {
+      marginTop: '20px',
+      fontSize: '1.2em',
+      color: '#333',
+    },
+  };
+
   return (
-    <div>
-      <h1>Currency Converter</h1>
-      <br />
-      <div>
-        <label>
-          From:
-          <input
-            type="text"
-            value={fromCurrency}
-            onChange={handleFromCurrencyChange}
-            placeholder="Enter currency code (e.g., USD)"
-          />
-        </label>
-        <label>
-          To:
-          <input
-            type="text"
-            value={toCurrency}
-            onChange={handleToCurrencyChange}
-            placeholder="Enter currency code (e.g., IDR)"
-          />
-        </label>
-        <label>
-          Amount:
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            placeholder="Enter amount"
-          />
-        </label>
-        <br />
-        <button onClick={fetchRate}>Convert</button>
+    <div style={styles.body}>
+      <div style={styles.container}>
+        <h1 style={styles.header}>Currency Converter</h1>
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            From:
+            <input
+              type="text"
+              value={fromCurrency}
+              onChange={handleFromCurrencyChange}
+              placeholder="Enter currency code (e.g., USD)"
+              style={styles.input}
+            />
+          </label>
+        </div>
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            To:
+            <input
+              type="text"
+              value={toCurrency}
+              onChange={handleToCurrencyChange}
+              placeholder="Enter currency code (e.g., IDR)"
+              style={styles.input}
+            />
+          </label>
+        </div>
+        <div style={styles.formGroup}>
+          <label style={styles.label}>
+            Amount:
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+              style={styles.input}
+            />
+          </label>
+        </div>
+        {rate && (
+          <p style={styles.result}>
+            {amount} {fromCurrency} is equal to {(amount * rate).toFixed(2)} {toCurrency}
+          </p>
+        )}
       </div>
-      {rate && (
-        <p>
-          {amount} {fromCurrency} is equal to {(amount * rate).toFixed(2)} {toCurrency}
-        </p>
-      )}
     </div>
   );
 }
