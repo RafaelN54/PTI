@@ -56,7 +56,7 @@ const AboutUs = () => {
       </div>
       <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-40 md:mt-32 w-full px-4">
         {cardData.map((data, index) => (
-          <div key={index} className="card w-[300px] h-[500px] bg-white rounded-lg overflow-hidden shadow-md ml-10 m-4" style={{ backgroundColor: data.color }}>
+          <div key={index} className="card w-[300px] h-[500px] bg-white rounded-lg overflow-hidden shadow-md ml-7 m-4" style={{ backgroundColor: data.color }}>
             <div className="w-full h-[160px] bg-red-700 flex items-center justify-center relative">
               <div className="w-[100px] h-[100px] rounded-full bg-white relative overflow-hidden">
                 <img src={data.image} alt="user" className="w-full h-full object-cover" />
